@@ -1,0 +1,86 @@
+# book search
+get http://192.168.203.36:3000/api/v1/book/?author=a
+
+# more filtering
+get http://192.168.203.36:3000/api/v1/book?page=1&title=&author=&keyword=
+
+
+##############
+get http://192.168.203.36:3000/api/v1/book?page=1&title=brief&author=&keyword=
+
+
+# get a single book
+###########
+get http://192.168.203.36:3000/api/v1/book/5
+
+#########################
+
+# create book
+post http://192.168.203.36:3000/api/v1/book
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphYmVyIiwiaWQiOiI2NGIwMTA1MmM2NjVjZTdlOGMyYjcxNWYiLCJpYXQiOjE2ODkyNjY1Njd9.YoXR1ZAyAzsVqtjqaSLO41L2pS2ojxou1pu02ZYY2jk
+
+{
+    "id":"",
+    "bookId":"",
+    "title":"Offline 1",
+    "link":"https://firebasestorage.googleapis.com/v0/b/litcode-ba82a.appspot.com/o/uploads%2Fspecification.pdf?alt=media&token=8493c2a2-e9a8-43a7-87af-8408aa355582",
+    "keywords":"offline,pain,dsa",
+    "description":"This is just the offline 1... provided by BUET CSE department as a surprise ",
+    "public":true
+}
+
+############### delete a book
+delete http://192.168.203.36:3000/api/v1/book/13
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImphYmVyIiwiaWQiOiI2NGIwMTA1MmM2NjVjZTdlOGMyYjcxNWYiLCJpYXQiOjE2ODkyNjY1Njd9.YoXR1ZAyAzsVqtjqaSLO41L2pS2ojxou1pu02ZYY2jk
+
+################3
+
+get http://192.168.203.36:3000/api/v1/user/jaber
+
+
+########
+get https://fly-ai-backend-production-afc3.up.railway.app/api/v1/user
+
+#####
+get http://192.168.203.36:3000/api/v1/chat/text/?prompt=hi
+
+
+
+
+
+#############
+put http://192.168.203.36:3000/api/v1/user
+Content-Type: application/json
+
+{
+  "username": "anik",
+  "name": "Anik Saha vai",
+  "bio": "An AI roaming around in the world of AI generated books ",
+  "dp": null
+}
+
+
+##########
+post http://192.168.203.36:3000/api/v1/user
+Content-Type: application/json
+
+{
+  "username": "jaber",
+  "name": "Jaber Ahmed",
+  "password":"123",
+  "bio": "A bot... really... Just another bot",
+  "dp": null
+}
+
+###################
+
+post https://fly-ai-backend-production.up.railway.app/api/v1/reg
+Content-Type: application/json
+
+{
+  "username": "nahin",
+  "name": "Nahin Bin Kaysar",
+  "password":"123"
+}
+

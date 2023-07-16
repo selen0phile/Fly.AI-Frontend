@@ -1,0 +1,83 @@
+import { Button, Card, Divider, Grid, Link } from '@mui/material'
+import { Box, Container } from '@mui/material'
+import { listAll, ref } from 'firebase/storage'
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { storage, auth } from '../firebase'
+
+function Problemset() {
+  const [problems, setProblems] = useState([])
+  useEffect(() => {
+    async function getData() {
+      var storageRef = ref(storage, '/problems/')
+      listAll(storageRef)
+        .then((res) => {
+          var p = []
+          res.prefixes.forEach((folderRef) => {
+            p.push({ id: folderRef.name, title: folderRef.name, rating: '500', tags: 'basic' })
+          });
+          setProblems(p)
+          res.items.forEach((itemRef) => {
+            // All the items under listRef.
+          });
+        }).catch((error) => {
+          // Uh-oh, an error occurred!
+        });
+    }
+    getData()
+  }, [])
+  function getColor(id) {
+    if (localStorage.getItem(id + '_status') !== null) {
+      const status = localStorage.getItem(id + '_status')
+      if(status === 'ac') return '#00ff00'
+      else return 'red'
+    }
+    return 'white'
+  }
+  const history = useHistory()
+  return (
+    <Box sx={{ margin: '5px' }}>
+      <Grid container>
+        <>
+          <Grid item xs={4} sm={4} md={4} xl={4} lg={4}>
+            <b>NAME</b>
+          </Grid>
+          <Grid item xs={2} sm={2} md={2} xl={2} lg={2}>
+            <b>RATING</b>
+          </Grid>
+          <Grid item xs={4} sm={4} md={4} xl={4} lg={4}>
+            <b>TAGS</b>
+          </Grid>
+          <Grid item xs={2} sm={2} md={2} xl={2} lg={2}>
+            <b>SOLVED BY</b>
+          </Grid>
+        </>
+        <Grid item xs={12} md={12} sm={12} lg={12} xl={12}>
+          <Divider />
+        </Grid>
+        {
+          problems.map((obj, key) =>
+            <>
+              <Grid item xs={4} sm={4} md={4} xl={4} lg={4}>
+                <Link href={'/problem/' + obj.id} underline='none' target='_blank' color={getColor(obj.id)}>
+                  {key + 1}.&emsp;{obj.title}
+                </Link>
+              </Grid>
+              <Grid item xs={2} sm={2} md={2} xl={2} lg={2}>
+                {obj.rating}
+              </Grid>
+              <Grid item xs={4} sm={4} md={4} xl={4} lg={4}>
+                {obj.tags}
+              </Grid>
+              <Grid item xs={2} sm={2} md={2} xl={2} lg={2}>
+                {0}
+              </Grid>
+            </>
+          )
+        }
+      </Grid>
+    </Box >
+  )
+}
+
+export default Problemset

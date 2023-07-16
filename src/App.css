@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400;500;600;700;800;900&family=Ubuntu:ital,wght@0,300;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* .gradient {
+    background: #40E0D0;
+    background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+    background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+}
+
+.gradient::before {
+    background: #40E0D0;
+    background: -webkit-linear-gradient(to right, #FF8C00, #40E0D0, #FF0080);
+    background: linear-gradient(to right, #FF8C00, #40E0D0, #FF0080); 
+} */
+
+.gradient {
+    position: relative;
+    min-height: 200px;
+    background: #40E0D0;
+    background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+    background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+    z-index: 1;
+}
+
+.gradient::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #833ab4;
+    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+    background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+    z-index: -1;
+    transition: opacity 0.2s linear;
+    opacity: 0;
+}
+
+.gradient:hover::before {
+    opacity: 1;
+}
+
+
+.litcode {
+    font-size: 50px !important;
+    position: relative;
+    background: #40E0D0;
+    background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+    background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+    z-index: 1;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.litcode:hover {
+    background: #833ab4;
+    background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+    background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.drawer {
+    background-color: red;
+    color: red;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.svg_icons {
+    transform: scale(7);
+}
+
+.svg_scale25 {
+    transform: scale(2.5);
+}
+
+.svg_scale15 {
+    transform: scale(1.5);
+}
+
+.svg_scale2 {
+    transform: scale(2);
+}
+
+.svg_scale3 {
+    transform: scale(3);
+}
+
+.mobileDrawer {
+    overflow: scroll;
+}
+
+.desktopDrawer {
+    min-height: 100vh;
+    overflow: scroll;
+}
+
+.content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
